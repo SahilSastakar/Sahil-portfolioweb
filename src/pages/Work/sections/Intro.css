@@ -1,0 +1,8 @@
+.work-intro {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  padding-block-start: 6rem;
+}

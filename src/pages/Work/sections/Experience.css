@@ -1,0 +1,60 @@
+.experience {
+  padding-block: clamp(4rem, 10vw, 7rem);
+  border-top: 1px solid var(--border-muted);
+}
+
+.experience__label {
+  margin-block-end: 2.5rem;
+}
+
+.experience__timeline {
+  position: relative;
+  padding-inline-start: clamp(1.5rem, 4vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 6vw, 4rem);
+}
+
+.experience__line {
+  position: absolute;
+  top: 0.4rem;
+  bottom: 0.4rem;
+  left: 0;
+  width: 2px;
+  background: var(--accent);
+}
+
+.experience__entry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.experience__dot {
+  position: absolute;
+  top: 0.3rem;
+  left: calc(clamp(1.5rem, 4vw, 3rem) * -1);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  transform: translateX(-3.5px);
+}
+
+.experience__dates {
+  color: var(--text-muted);
+}
+
+.experience__role {
+  font-size: clamp(1.4rem, 2.8vw, 2rem);
+}
+
+.experience__org {
+  color: var(--accent-dim);
+}
+
+.experience__description {
+  color: var(--text-muted);
+  max-width: 50ch;
+}

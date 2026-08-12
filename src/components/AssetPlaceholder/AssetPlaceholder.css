@@ -1,0 +1,11 @@
+.asset-placeholder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-muted);
+  border-radius: 4px;
+  text-align: center;
+  padding: 1rem;
+}

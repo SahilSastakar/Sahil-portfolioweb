@@ -1,0 +1,44 @@
+.what-i-do {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.what-i-do__row {
+  border-top: 1px solid var(--border-muted);
+  transition: background 0.3s var(--ease-out);
+}
+
+.what-i-do__row:last-child {
+  border-bottom: 1px solid var(--border-muted);
+}
+
+.what-i-do__row:hover {
+  background: var(--bg-raised);
+}
+
+.what-i-do__row-inner {
+  display: grid;
+  grid-template-columns: 3.5rem auto 1fr;
+  align-items: baseline;
+  gap: clamp(1rem, 3vw, 3rem);
+  padding-block: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.what-i-do__number {
+  color: var(--accent);
+}
+
+.what-i-do__title {
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+.what-i-do__description {
+  color: var(--text-muted);
+  max-width: 40ch;
+}
+
+@media (max-width: 700px) {
+  .what-i-do__row-inner {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}

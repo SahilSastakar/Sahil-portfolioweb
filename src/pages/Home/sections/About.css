@@ -1,0 +1,29 @@
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  padding-block: clamp(5rem, 12vw, 9rem);
+}
+
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about__label {
+  color: var(--accent);
+}
+
+.about__body {
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  line-height: 1.4;
+  max-width: 40ch;
+}
+
+@media (max-width: 800px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,27 @@
+.skills {
+  padding-block: clamp(4rem, 10vw, 7rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 1px solid var(--border-muted);
+}
+
+.skills__row {
+  overflow: hidden;
+}
+
+.skills__track {
+  display: flex;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  width: max-content;
+  padding-inline: var(--container-pad);
+}
+
+.skills__item {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}

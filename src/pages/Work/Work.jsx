@@ -1,8 +1,18 @@
+import Intro from "./sections/Intro.jsx";
+import ProjectShowcase from "./sections/ProjectShowcase.jsx";
+import Skills from "./sections/Skills.jsx";
+import Experience from "./sections/Experience.jsx";
+import Contact from "./sections/Contact.jsx";
+
 function Work() {
   return (
-    <div className="container">
-      <p className="mono-label">Work — content built in Phase 2</p>
-    </div>
+    <>
+      <Intro />
+      <ProjectShowcase />
+      <Skills />
+      <Experience />
+      <Contact />
+    </>
   );
 }
 
