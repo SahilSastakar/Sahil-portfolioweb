@@ -19,13 +19,6 @@ const ENTRIES = [
       "Led a 5-person team building a crop optimisation tool from sensor, weather, and microbial data.",
   },
   {
-    role: "Founder and CEO",
-    org: "RankMax.AI",
-    dates: "2023 — 2024",
-    description:
-      "Founded and built an LLM quiz platform, pitched to investors from Google, Antler, and CDL Labs.",
-  },
-  {
     role: "Data Analyst Intern",
     org: "Foxberry Technologies",
     dates: "Jun 2022 — Sep 2023",
