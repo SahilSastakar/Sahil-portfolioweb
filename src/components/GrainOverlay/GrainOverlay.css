@@ -1,0 +1,10 @@
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  background-image: url("/noise.png");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  opacity: 0.03;
+}

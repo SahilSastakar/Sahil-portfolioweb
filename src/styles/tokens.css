@@ -1,0 +1,62 @@
+:root {
+  /* Color */
+  --bg-base: #0a0a0c;
+  --bg-raised: #121216;
+  --accent: #00e5ff;
+  --accent-dim: #0891b2;
+  --text-primary: #f4f4f5;
+  --text-muted: #71717a;
+  --border-muted: #26262b;
+
+  /* Type */
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Layout */
+  --container-max: 1400px;
+  --container-pad: clamp(1.25rem, 4vw, 4rem);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html, body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+}
+
+body {
+  font-size: 17px;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+h1 {
+  font-size: clamp(3rem, 11vw, 10rem);
+}
+
+p {
+  max-width: 65ch;
+}
+
+/* ---------- Utilities ---------- */
+
+.mono-label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}

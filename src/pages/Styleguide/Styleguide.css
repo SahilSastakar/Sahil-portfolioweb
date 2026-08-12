@@ -1,0 +1,36 @@
+.styleguide {
+  padding-block: 8rem 4rem;
+}
+
+.styleguide__section {
+  margin-block-start: 3rem;
+  padding-block-start: 2rem;
+  border-top: 1px solid var(--border-muted);
+}
+
+.styleguide__section h2 {
+  font-size: 1.5rem;
+  margin-block-end: 1.5rem;
+}
+
+.styleguide__swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
+}
+
+.swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.swatch__chip {
+  width: 100%;
+  aspect-ratio: 1.5;
+  border-radius: 4px;
+}
+
+.styleguide__note {
+  margin-block: 1.5rem 0.5rem;
+}
