@@ -1,109 +1,224 @@
-.project {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+/* ================= Pinned "Thread" (desktop, motion allowed) ================= */
+
+/* No explicit height here on purpose - same reason as Hero: ScrollTrigger
+   replaces .thread__stage with a pin-spacer sized to (100vh + pinVh% of
+   extra scroll). A fixed height on .thread would clamp to just 100vh and
+   the next section would render while the thread was still pinned. */
+.thread {
+  position: relative;
   border-top: 1px solid var(--border-muted);
 }
 
-.project__inner {
-  display: flex;
-  align-items: center;
-  gap: clamp(2rem, 6vw, 5rem);
-  padding-block: clamp(4rem, 8vw, 6rem);
+.thread__stage {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-base);
 }
 
-.project--reversed .project__inner {
+.thread__canvas {
+  position: absolute;
+  inset: 0;
+}
+
+.thread-station {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-inline: clamp(1.5rem, 6vw, 6rem);
+}
+
+.thread-station--reversed {
   flex-direction: row-reverse;
 }
 
-.project__emblem {
+.thread-station__emblem {
   flex: 1 1 0;
   min-width: 0;
+  max-width: 34rem;
 }
 
-.project__emblem-mask {
+.thread-station__emblem-mask {
   position: relative;
   aspect-ratio: 1/1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-raised);
-  border: 1px solid var(--border-muted);
   border-radius: 4px;
   overflow: hidden;
 }
 
-.project__emblem-mask::after {
+.thread-station__emblem-mask video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thread-station__emblem-mask::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle,
-    transparent 40%,
-    var(--bg-base) 100%
-  );
+  background: radial-gradient(circle, transparent 40%, var(--bg-base) 100%);
   pointer-events: none;
 }
 
-.project__info {
+.thread-station__info {
   flex: 1 1 0;
   min-width: 0;
+  max-width: 30rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
 }
 
-.project__number {
+.thread-station__number {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(3rem, 8vw, 6rem);
   font-weight: 700;
   line-height: 1;
   color: transparent;
   -webkit-text-stroke: 1.5px var(--text-muted);
 }
 
-.project__title {
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
+.thread-station__title {
+  font-size: clamp(1.75rem, 4vw, 3rem);
   margin-block-start: -0.5rem;
 }
 
-.project__description {
+.thread-station__description {
   color: var(--text-muted);
-  max-width: 40ch;
 }
 
-.project__tags {
+.thread-station__tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
 }
 
-.project__tag {
+.thread-station__tag {
   border: 1px solid var(--border-muted);
   border-radius: 999px;
   padding: 0.35rem 0.9rem;
 }
 
-.project__outcome {
+.thread-station__outcome {
   color: var(--accent-dim);
 }
 
-.project__link {
+.thread-station__link {
   font-family: var(--font-display);
   font-weight: 600;
   margin-block-start: 0.5rem;
   transition: color 0.3s var(--ease-out);
 }
 
-.project__link:hover {
+.thread-station__link:hover {
   color: var(--accent);
 }
 
-@media (max-width: 800px) {
-  .project__inner,
-  .project--reversed .project__inner {
-    flex-direction: column;
-    align-items: stretch;
-  }
+/* ================= Stacked fallback (mobile, and reduced motion) ================= */
+
+.thread-stacked {
+  position: relative;
+  border-top: 1px solid var(--border-muted);
+}
+
+.thread-stacked__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--accent-dim) 10%,
+    var(--accent-dim) 90%,
+    transparent
+  );
+  opacity: 0.4;
+}
+
+.thread-stacked__station {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: clamp(3rem, 8vw, 5rem) clamp(1.25rem, 4vw, 4rem);
+  text-align: center;
+}
+
+.thread-stacked__emblem {
+  width: min(100%, 22rem);
+}
+
+.thread-stacked__emblem-mask {
+  position: relative;
+  aspect-ratio: 1/1;
+  background: var(--bg-raised);
+  border: 1px solid var(--border-muted);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.thread-stacked__emblem-mask video,
+.thread-stacked__emblem-mask img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.thread-stacked__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  max-width: 34rem;
+}
+
+.thread-stacked__number {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--text-muted);
+}
+
+.thread-stacked__title {
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  margin-block-start: -0.5rem;
+}
+
+.thread-stacked__description {
+  color: var(--text-muted);
+}
+
+.thread-stacked__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.thread-stacked__tag {
+  border: 1px solid var(--border-muted);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+}
+
+.thread-stacked__outcome {
+  color: var(--accent-dim);
+}
+
+.thread-stacked__link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  transition: color 0.3s var(--ease-out);
+}
+
+.thread-stacked__link:hover {
+  color: var(--accent);
 }
