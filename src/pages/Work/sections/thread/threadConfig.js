@@ -51,12 +51,23 @@ export const THREAD_CONFIG = {
       key: "intelliharvest",
       number: "02",
       title: "Intelliharvest",
+      // Unlike OutbackShare/RankMax, this was a 5-person team effort with
+      // Sahil as lead, not a solo build - role reflects that honestly.
+      role: "Project Lead — 5-Person Team",
       logo: "/assets/logos/intelliharvest.png",
       video: "/assets/emblems/intelliharvest.mp4",
       poster: "/assets/emblems/intelliharvest-poster.webp",
-      description:
-        "AI-driven crop optimisation combining sensor, weather, and microbial data to guide agricultural decisions.",
-      tags: ["Generative AI", "Sensor Fusion", "Python"],
+      sections: [
+        {
+          label: "Growth Monitoring",
+          body: "Tracks a crop's complete growth cycle from seed sowing through to cultivation, continuously analysing each growth stage against ground sensor data (N, P, K, pH), live weather feeds, and microbial soil data.",
+        },
+        {
+          label: "Real-Time Guidance",
+          body: "Turns that analysis into real-time recommendations - how much water and which nutrients to apply, and which microbial cultures to introduce - tuned to help the client's specific crop reach their required commercial quality and yield.",
+        },
+      ],
+      tags: ["Generative AI", "Sensor Fusion", "Precision Agriculture", "Soil Microbiome"],
       outcome: "Exceeded traditional benchmarks across all evaluation metrics",
       url: "[TODO: url]",
       side: "right",
