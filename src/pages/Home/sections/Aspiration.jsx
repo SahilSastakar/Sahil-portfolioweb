@@ -13,7 +13,8 @@ function Aspiration() {
 
       <div className="aspiration__content container">
         <SplitLines as="p" className="aspiration__statement">
-          [TODO: aspiration statement]
+          I build agentic systems to see what&rsquo;s possible &mdash;
+          and become a better AI engineer with every one I ship.
         </SplitLines>
       </div>
     </section>
