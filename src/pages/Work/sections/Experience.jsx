@@ -5,28 +5,32 @@ import "./Experience.css";
 
 const ENTRIES = [
   {
-    role: "[TODO: role]",
-    org: "[TODO: org]",
-    dates: "[TODO: dates]",
-    description: "[TODO: one line]",
+    role: "Research Assistant — AI and Data Science",
+    org: "Centre for Technology Infusion, La Trobe University",
+    dates: "Dec 2025 — Present",
+    description:
+      "Built an end-to-end ML pipeline on Azure processing 500+ live IoT sensor streams with zero data loss.",
   },
   {
-    role: "[TODO: role]",
-    org: "[TODO: org]",
-    dates: "[TODO: dates]",
-    description: "[TODO: one line]",
+    role: "Project Lead",
+    org: "Intelli-harvest, Monash DeepNeuron",
+    dates: "2024",
+    description:
+      "Led a 5-person team building a crop optimisation tool from sensor, weather, and microbial data.",
   },
   {
-    role: "[TODO: role]",
-    org: "[TODO: org]",
-    dates: "[TODO: dates]",
-    description: "[TODO: one line]",
+    role: "Founder and CEO",
+    org: "RankMax.AI",
+    dates: "2023 — 2024",
+    description:
+      "Founded and built an LLM quiz platform, pitched to investors from Google, Antler, and CDL Labs.",
   },
   {
-    role: "[TODO: role]",
-    org: "[TODO: org]",
-    dates: "[TODO: dates]",
-    description: "[TODO: one line]",
+    role: "Data Analyst Intern",
+    org: "Foxberry Technologies",
+    dates: "Jun 2022 — Sep 2023",
+    description:
+      "Built a tax-default classifier and BI dashboards, cutting manual reporting time by ~40%.",
   },
 ];
 

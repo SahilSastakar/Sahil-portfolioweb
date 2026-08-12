@@ -25,7 +25,13 @@ function About({ startPreload }) {
           About
         </SplitLines>
         <p className="about__body reveal-fade">
-          [TODO: 3 short sentences about who I am]
+          I'm a Master of Artificial Intelligence candidate at Monash
+          University, building end-to-end ML systems from data pipeline to
+          deployment. My work spans computer vision, LLM pipelines, and
+          agentic automation, with production experience at La Trobe's
+          Centre for Technology Infusion and Foxberry Technologies. Outside
+          coursework, I've founded and led AI ventures like RankMax.AI and
+          Intelli-harvest from first pitch through to delivery.
         </p>
       </div>
     </section>

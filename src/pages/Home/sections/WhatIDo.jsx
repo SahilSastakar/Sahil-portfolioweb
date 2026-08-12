@@ -5,22 +5,26 @@ const ROWS = [
   {
     number: "01",
     title: "Data Analytics & BI",
-    description: "[TODO: one-line description]",
+    description:
+      "Turning messy data into dashboards and decisions with SQL, Power BI, and Tableau.",
   },
   {
     number: "02",
     title: "Machine Learning & NLP",
-    description: "[TODO: one-line description]",
+    description:
+      "Training and deploying models, from ConvNeXt image classifiers to LLM-based content pipelines.",
   },
   {
     number: "03",
     title: "AI Automation & Agents",
-    description: "[TODO: one-line description]",
+    description:
+      "Designing agentic workflows with n8n, MCP servers, and LLM APIs that run themselves.",
   },
   {
     number: "04",
     title: "MLOps & Cloud",
-    description: "[TODO: one-line description]",
+    description:
+      "Shipping ML pipelines on Azure and Docker with SHAP-backed explainability and governance.",
   },
 ];
 

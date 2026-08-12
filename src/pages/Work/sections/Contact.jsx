@@ -16,10 +16,10 @@ function Contact() {
           LET&rsquo;S TALK
         </SplitLines>
         <a
-          href="mailto:[TODO: email]"
+          href="mailto:sastakar.sahil@gmail.com"
           className="contact__email reveal-fade"
         >
-          [TODO: email]
+          sastakar.sahil@gmail.com
         </a>
         <a href="/resume.pdf" className="contact__resume-button reveal-fade">
           Download resume

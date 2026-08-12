@@ -8,7 +8,9 @@ const ROW_2 = [
   "n8n",
   "Git",
   "Docker",
-  "[TODO: more]",
+  "TensorFlow",
+  "FastAPI",
+  "Supabase",
 ];
 
 function MarqueeRow({ items, direction }) {

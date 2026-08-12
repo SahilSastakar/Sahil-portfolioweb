@@ -75,7 +75,7 @@ function Hero({ onPinEnd }) {
             SAHIL SASTAKAR
           </SplitLines>
           <p className="mono-label reveal-fade">
-            [TODO: role line, e.g. Data & AI Graduate, Monash University]
+            Master of AI Candidate, Monash University
           </p>
         </div>
 
