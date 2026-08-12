@@ -9,7 +9,7 @@ function About() {
     <section id="about" className="about container" ref={scope}>
       <div className="about__asset reveal-fade">
         <img
-          src="/assets/sahil.png"
+          src="/assets/sahil.jpg"
           alt="Sahil Sastakar"
           className="about__photo"
         />
@@ -20,12 +20,12 @@ function About() {
           About
         </SplitLines>
         <p className="about__body reveal-fade">
-          I'm a Master of Artificial Intelligence candidate at Monash
-          University, building end-to-end ML systems from data pipeline to
-          deployment. My work spans computer vision, LLM pipelines, and
-          agentic automation, with production experience at La Trobe's
-          Centre for Technology Infusion and Foxberry Technologies. Outside
-          coursework, I've founded and led AI ventures like RankMax.AI and
+          I hold a Master of Artificial Intelligence from Monash University,
+          and build end-to-end ML systems from data pipeline to deployment.
+          My work spans computer vision, LLM pipelines, and agentic
+          automation, with production experience at La Trobe's Centre for
+          Technology Infusion and Foxberry Technologies. Outside coursework,
+          I've founded and led AI ventures like RankMax.AI and
           Intelli-harvest from first pitch through to delivery.
         </p>
       </div>

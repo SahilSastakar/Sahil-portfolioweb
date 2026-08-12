@@ -6,21 +6,21 @@
   padding-block: clamp(5rem, 12vw, 9rem);
 }
 
+/* Matches sahil.jpg's own pixel ratio (900x990) exactly, so the frame
+   is sized to the photo rather than the photo being fit/cropped/padded
+   into an unrelated box shape. */
 .about__asset {
-  aspect-ratio: 4 / 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--bg-raised);
+  aspect-ratio: 900 / 990;
+  overflow: hidden;
   border: 1px solid var(--border-muted);
   border-radius: 4px;
-  padding: 2rem;
 }
 
 .about__photo {
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .about__content {

@@ -74,7 +74,7 @@ function Hero() {
             SAHIL SASTAKAR
           </SplitLines>
           <p className="mono-label reveal-fade">
-            Master of AI Candidate, Monash University
+            Master of Artificial Intelligence, Monash University
           </p>
         </div>
 
