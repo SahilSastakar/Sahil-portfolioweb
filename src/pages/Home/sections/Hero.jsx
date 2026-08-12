@@ -11,7 +11,7 @@ import "./Hero.css";
 const FRAME_COUNT = 192;
 const SCROLL_LENGTH = "150%";
 
-function Hero({ onPinEnd }) {
+function Hero() {
   const scope = useSectionReveal();
   const scrubRef = useRef(null);
   const contentRef = useRef(null);
@@ -67,7 +67,6 @@ function Hero({ onPinEnd }) {
         frameCount={FRAME_COUNT}
         pinned
         scrollLength={SCROLL_LENGTH}
-        onLeave={onPinEnd}
         className="hero__scrub"
       >
         <div className="hero__content container" ref={contentRef}>

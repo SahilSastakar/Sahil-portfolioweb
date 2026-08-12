@@ -1,22 +1,17 @@
-import ScrubSequence from "../../../components/ScrubSequence/ScrubSequence.jsx";
 import SplitLines from "../../../components/SplitLines/SplitLines.jsx";
 import { useSectionReveal } from "../../../hooks/useSectionReveal.js";
 import "./About.css";
 
-const FRAME_COUNT = 192;
-
-function About({ startPreload }) {
+function About() {
   const scope = useSectionReveal();
 
   return (
     <section id="about" className="about container" ref={scope}>
       <div className="about__asset reveal-fade">
-        <ScrubSequence
-          framePath="/assets/about/frame_%03d.webp"
-          frameCount={FRAME_COUNT}
-          pinned={false}
-          startPreload={startPreload}
-          className="about__scrub"
+        <img
+          src="/assets/sahil.png"
+          alt="Sahil Sastakar"
+          className="about__photo"
         />
       </div>
 
