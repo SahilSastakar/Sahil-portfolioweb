@@ -68,13 +68,25 @@ export const THREAD_CONFIG = {
       key: "rankmax",
       number: "03",
       title: "RankMax",
+      // Same scope note as OutbackShare: RankMax.AI had more surface area
+      // than this (security, Supabase infra) - role/sections cover only
+      // the AI systems and frontend, which were solely mine.
+      role: "AI/ML & Frontend — Solo Build",
       logo: "/assets/logos/rankmax.png",
       video: "/assets/emblems/rankmax.mp4",
       poster: "/assets/emblems/rankmax-poster.webp",
-      description:
-        "Generative AI platform turning textbook content into gamified quizzes, pitched to a Shark-Tank-style investor panel.",
-      tags: ["LLM Pipelines", "Prompt Engineering", "Gamification"],
-      outcome: "85%+ content accuracy, ~3x student engagement uplift",
+      sections: [
+        {
+          label: "UI/UX",
+          body: "Built the full Next.js/TypeScript frontend solo - student and teacher experiences in one app: dashboards, a diagnostic quiz, a personal knowledge-graph visualisation, quiz-taking, and a teacher curriculum-upload and gradebook flow.",
+        },
+        {
+          label: "AI/ML",
+          body: "Designed a graph neural network that models topic prerequisites and propagates difficulty signals across a unit, self-retraining on real student interaction data. Paired it with an LLM engine (Groq) that rewrites content across 10 difficulty levels, plus a RAG pipeline grounding notes in live job-posting data.",
+        },
+      ],
+      tags: ["Graph Neural Networks", "RAG", "LLM Pipelines", "Next.js", "Supabase"],
+      outcome: "Deployed across 4 university units, 12 weeks of curriculum each",
       url: "[TODO: url]",
       side: "left",
       range: [0.58, 0.66, 0.82, 0.92],
