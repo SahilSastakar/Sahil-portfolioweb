@@ -14,10 +14,14 @@ function stationVisibility(progress, [fadeInStart, plateauStart, plateauEnd, fad
   return 1 - (progress - plateauEnd) / (fadeOutEnd - plateauEnd);
 }
 
+function handleLogoError(e) {
+  e.currentTarget.closest(".thread-station__logo-badge").style.display = "none";
+}
+
 const Station = forwardRef(function Station({ station }, forwardedRef) {
   const rootRef = useRef(null);
-  const emblemRef = useRef(null);
-  const infoRef = useRef(null);
+  const bgRef = useRef(null);
+  const cardRef = useRef(null);
   const videoRef = useRef(null);
   const isPlayingRef = useRef(false);
 
@@ -26,15 +30,13 @@ const Station = forwardRef(function Station({ station }, forwardedRef) {
   useImperativeHandle(forwardedRef, () => ({
     update(progress) {
       const visibility = stationVisibility(progress, station.range);
-      const { scaleFrom, scaleTo } = THREAD_CONFIG.emblem;
-      const scale = scaleFrom + (scaleTo - scaleFrom) * visibility;
 
-      if (emblemRef.current) {
-        gsap.set(emblemRef.current, { opacity: visibility, scale });
+      if (bgRef.current) {
+        gsap.set(bgRef.current, { opacity: visibility });
       }
-      if (infoRef.current) {
-        gsap.set(infoRef.current, { opacity: visibility });
-        const lines = infoRef.current.querySelectorAll(".split-line__inner");
+      if (cardRef.current) {
+        gsap.set(cardRef.current, { opacity: visibility });
+        const lines = cardRef.current.querySelectorAll(".split-line__inner");
         if (lines.length) {
           gsap.set(lines, { yPercent: (1 - visibility) * 110 });
         }
@@ -56,51 +58,60 @@ const Station = forwardRef(function Station({ station }, forwardedRef) {
   }));
 
   useEffect(() => {
-    gsap.set(emblemRef.current, { opacity: 0, scale: THREAD_CONFIG.emblem.scaleFrom });
-    gsap.set(infoRef.current, { opacity: 0 });
+    gsap.set(bgRef.current, { opacity: 0 });
+    gsap.set(cardRef.current, { opacity: 0 });
   }, []);
 
-  const reversed = station.side === "right";
-
   return (
-    <div
-      ref={rootRef}
-      className={`thread-station ${reversed ? "thread-station--reversed" : ""}`}
-    >
-      <div className="thread-station__emblem" ref={emblemRef}>
-        <div className="thread-station__emblem-mask">
-          <video
-            ref={videoRef}
-            src={station.video}
-            poster={station.poster}
-            muted
-            loop
-            playsInline
-            preload="none"
-          />
-        </div>
+    <div ref={rootRef} className="thread-station">
+      <div className="thread-station__bg" ref={bgRef}>
+        <video
+          ref={videoRef}
+          src={station.video}
+          poster={station.poster}
+          muted
+          loop
+          playsInline
+          preload="none"
+        />
       </div>
 
-      <div className="thread-station__info" ref={infoRef}>
-        <span className="thread-station__number">{station.number}</span>
-        <SplitLines as="h3" className="thread-station__title">
-          {station.title}
-        </SplitLines>
-        <p className="thread-station__description">{station.description}</p>
+      <div className={`thread-station__card-slot thread-station__card-slot--${station.side}`}>
+        <div
+          className="thread-station__card"
+          ref={cardRef}
+          style={{
+            background: THREAD_CONFIG.glass.tint,
+            backdropFilter: `blur(${THREAD_CONFIG.glass.blur}px) saturate(${THREAD_CONFIG.glass.saturate})`,
+            WebkitBackdropFilter: `blur(${THREAD_CONFIG.glass.blur}px) saturate(${THREAD_CONFIG.glass.saturate})`,
+          }}
+        >
+          {station.logo && (
+            <div className="thread-station__logo-badge">
+              <img src={station.logo} alt="" onError={handleLogoError} />
+            </div>
+          )}
 
-        <ul className="thread-station__tags">
-          {station.tags.map((tag) => (
-            <li key={tag} className="mono-label thread-station__tag">
-              {tag}
-            </li>
-          ))}
-        </ul>
+          <span className="thread-station__number">{station.number}</span>
+          <SplitLines as="h3" className="thread-station__title">
+            {station.title}
+          </SplitLines>
+          <p className="thread-station__description">{station.description}</p>
 
-        <p className="mono-label thread-station__outcome">{station.outcome}</p>
+          <ul className="thread-station__tags">
+            {station.tags.map((tag) => (
+              <li key={tag} className="mono-label thread-station__tag">
+                {tag}
+              </li>
+            ))}
+          </ul>
 
-        <a href={station.url} className="thread-station__link">
-          View project →
-        </a>
+          <p className="mono-label thread-station__outcome">{station.outcome}</p>
+
+          <a href={station.url} className="thread-station__link">
+            View project →
+          </a>
+        </div>
       </div>
     </div>
   );

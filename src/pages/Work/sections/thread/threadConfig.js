@@ -10,6 +10,7 @@ export const THREAD_CONFIG = {
       key: "outbackshare",
       number: "01",
       title: "OutbackShare",
+      logo: "/assets/logos/outbackshare.png",
       video: "/assets/emblems/outbackshare.mp4",
       poster: "/assets/emblems/outbackshare-poster.webp",
       description:
@@ -34,6 +35,7 @@ export const THREAD_CONFIG = {
       key: "intelliharvest",
       number: "02",
       title: "Intelliharvest",
+      logo: "/assets/logos/intelliharvest.png",
       video: "/assets/emblems/intelliharvest.mp4",
       poster: "/assets/emblems/intelliharvest-poster.webp",
       description:
@@ -50,6 +52,7 @@ export const THREAD_CONFIG = {
       key: "rankmax",
       number: "03",
       title: "RankMax",
+      logo: "/assets/logos/rankmax.png",
       video: "/assets/emblems/rankmax.mp4",
       poster: "/assets/emblems/rankmax-poster.webp",
       description:
@@ -63,9 +66,14 @@ export const THREAD_CONFIG = {
       transitionFrameCount: 0,
     },
   ],
-  emblem: {
-    scaleFrom: 0.85,
-    scaleTo: 1,
+  // Glass card scrim: a dark tint (not a new hue - your own --bg-base) at
+  // medium opacity, so text stays readable regardless of what's playing
+  // in the full-bleed video behind it, while still reading as translucent
+  // glass rather than a solid panel.
+  glass: {
+    tint: "rgba(10, 10, 12, 0.45)",
+    blur: 28,
+    saturate: 1.6,
   },
   pulse: {
     // Multiplier on pulse glow radius/intensity while inside a station's

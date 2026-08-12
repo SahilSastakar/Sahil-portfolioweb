@@ -16,78 +16,111 @@
   background: var(--bg-base);
 }
 
+/* The thread line is an accent riding over the full-bleed video, so it
+   needs to paint above the video layer but below the glass cards. */
 .thread__canvas {
   position: absolute;
   inset: 0;
+  z-index: 2;
 }
 
 .thread-station {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: clamp(2rem, 6vw, 6rem);
-  padding-inline: clamp(1.5rem, 6vw, 6rem);
 }
 
-.thread-station--reversed {
-  flex-direction: row-reverse;
+/* Full-bleed video background, one per station, crossfading via opacity
+   only (no scale - scaling below 1 would reveal gaps at the edges of a
+   layer that's meant to cover the whole stage). */
+.thread-station__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
-.thread-station__emblem {
-  flex: 1 1 0;
-  min-width: 0;
-  max-width: 34rem;
-}
-
-.thread-station__emblem-mask {
-  position: relative;
-  aspect-ratio: 1/1;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.thread-station__emblem-mask video {
+.thread-station__bg video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.thread-station__emblem-mask::after {
+/* Soft vignette so the video blends into the page at the edges instead
+   of a hard cut, and dims the far edges further behind the glass card. */
+.thread-station__bg::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle, transparent 40%, var(--bg-base) 100%);
+  background: radial-gradient(
+    ellipse 80% 70% at 50% 50%,
+    transparent 40%,
+    var(--bg-base) 115%
+  );
   pointer-events: none;
 }
 
-.thread-station__info {
-  flex: 1 1 0;
-  min-width: 0;
-  max-width: 30rem;
+.thread-station__card-slot {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-inline: clamp(1.5rem, 6vw, 6rem);
+}
+
+.thread-station__card-slot--left {
+  justify-content: flex-start;
+}
+
+.thread-station__card-slot--right {
+  justify-content: flex-end;
+}
+
+/* The glass card. Blur/saturate/tint values come from THREAD_CONFIG.glass
+   via inline style, not here, so they stay in the one tunable config. */
+.thread-station__card {
+  max-width: 26rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
+  padding: clamp(1.75rem, 3.5vw, 2.75rem);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.thread-station__logo-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #f4f4f5;
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  margin-block-end: 0.25rem;
+}
+
+.thread-station__logo-badge img {
+  display: block;
+  height: 28px;
+  width: auto;
 }
 
 .thread-station__number {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2.5rem, 6vw, 4rem);
   font-weight: 700;
   line-height: 1;
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--text-muted);
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.4);
 }
 
 .thread-station__title {
-  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 3.4vw, 2.5rem);
   margin-block-start: -0.5rem;
 }
 
 .thread-station__description {
-  color: var(--text-muted);
+  color: var(--text-primary);
+  opacity: 0.85;
 }
 
 .thread-station__tags {
@@ -97,24 +130,24 @@
 }
 
 .thread-station__tag {
-  border: 1px solid var(--border-muted);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   padding: 0.35rem 0.9rem;
 }
 
 .thread-station__outcome {
-  color: var(--accent-dim);
+  color: var(--accent);
 }
 
 .thread-station__link {
   font-family: var(--font-display);
   font-weight: 600;
   margin-block-start: 0.5rem;
-  transition: color 0.3s var(--ease-out);
+  transition: opacity 0.3s var(--ease-out);
 }
 
 .thread-station__link:hover {
-  color: var(--accent);
+  opacity: 0.75;
 }
 
 /* ================= Stacked fallback (mobile, and reduced motion) ================= */
