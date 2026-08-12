@@ -78,7 +78,7 @@ const Station = forwardRef(function Station({ station }, forwardedRef) {
 
       <div className={`thread-station__card-slot thread-station__card-slot--${station.side}`}>
         <div
-          className="thread-station__card"
+          className={`thread-station__card ${station.sections ? "thread-station__card--wide" : ""}`}
           ref={cardRef}
           style={{
             background: THREAD_CONFIG.glass.tint,
@@ -96,7 +96,22 @@ const Station = forwardRef(function Station({ station }, forwardedRef) {
           <SplitLines as="h3" className="thread-station__title">
             {station.title}
           </SplitLines>
-          <p className="thread-station__description">{station.description}</p>
+          {station.role && (
+            <p className="mono-label thread-station__role">{station.role}</p>
+          )}
+
+          {station.sections ? (
+            station.sections.map((section) => (
+              <div className="thread-station__section" key={section.label}>
+                <p className="mono-label thread-station__section-label">
+                  {section.label}
+                </p>
+                <p className="thread-station__description">{section.body}</p>
+              </div>
+            ))
+          ) : (
+            <p className="thread-station__description">{station.description}</p>
+          )}
 
           <ul className="thread-station__tags">
             {station.tags.map((tag) => (

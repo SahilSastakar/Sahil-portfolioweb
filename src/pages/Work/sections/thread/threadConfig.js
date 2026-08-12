@@ -10,12 +10,28 @@ export const THREAD_CONFIG = {
       key: "outbackshare",
       number: "01",
       title: "OutbackShare",
+      // Scope note, not a job title: this project had a wider team/stack
+      // (FastAPI, PostgreSQL, deployment) - role and sections below only
+      // cover what was actually mine, the AI systems and the frontend.
+      role: "AI/ML & Frontend — Solo Build",
       logo: "/assets/logos/outbackshare.png",
       video: "/assets/emblems/outbackshare.mp4",
       poster: "/assets/emblems/outbackshare-poster.webp",
-      description:
-        "Food relief coordination platform pairing an image classifier with demand forecasting for high-need postcodes.",
-      tags: ["Computer Vision", "Forecasting", "PostgreSQL", "SHAP"],
+      // Two labeled blurbs instead of one description line - there was
+      // enough real, specific work here to be worth the extra room.
+      // Station.jsx renders `sections` when present, falling back to
+      // `description` (see the other two stations) otherwise.
+      sections: [
+        {
+          label: "UI/UX",
+          body: "Built the full React frontend solo - donor and organisation experience in one app, role-based routing, a bilingual English/中文 interface, a live listing board, in-app messaging, and a Leaflet map rendering real ABS postcode boundaries by risk and supply gap.",
+        },
+        {
+          label: "AI/ML",
+          body: "Designed both AI systems: a ConvNeXt-Tiny + Grounding DINO pipeline that recognises food from a photo and auto-fills a listing in under 60 seconds, plus an Area Intelligence engine - K-Means risk clustering and a Random Forest demand model on ABS SEIFA data, explained per-postcode with SHAP.",
+        },
+      ],
+      tags: ["ConvNeXt-Tiny", "Grounding DINO", "SHAP", "React", "Leaflet"],
       outcome: "84.5% top-1 validation accuracy across 101k images",
       url: "[TODO: url]",
       side: "left",

@@ -32,9 +32,26 @@ function StackedStation({ station, useVideo }) {
         <SplitLines as="h3" className="thread-stacked__title">
           {station.title}
         </SplitLines>
-        <p className="thread-stacked__description reveal-fade">
-          {station.description}
-        </p>
+        {station.role && (
+          <p className="mono-label thread-stacked__role reveal-fade">
+            {station.role}
+          </p>
+        )}
+
+        {station.sections ? (
+          station.sections.map((section) => (
+            <div className="thread-stacked__section reveal-fade" key={section.label}>
+              <p className="mono-label thread-stacked__section-label">
+                {section.label}
+              </p>
+              <p className="thread-stacked__description">{section.body}</p>
+            </div>
+          ))
+        ) : (
+          <p className="thread-stacked__description reveal-fade">
+            {station.description}
+          </p>
+        )}
 
         <ul className="thread-stacked__tags reveal-fade">
           {station.tags.map((tag) => (
