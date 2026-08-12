@@ -1,15 +1,23 @@
-import AssetPlaceholder from "../../../components/AssetPlaceholder/AssetPlaceholder.jsx";
+import ScrubSequence from "../../../components/ScrubSequence/ScrubSequence.jsx";
 import SplitLines from "../../../components/SplitLines/SplitLines.jsx";
 import { useSectionReveal } from "../../../hooks/useSectionReveal.js";
 import "./About.css";
 
-function About() {
+const FRAME_COUNT = 192;
+
+function About({ startPreload }) {
   const scope = useSectionReveal();
 
   return (
     <section id="about" className="about container" ref={scope}>
       <div className="about__asset reveal-fade">
-        <AssetPlaceholder path="/assets/about/frame_001.webp" ratio="4/5" />
+        <ScrubSequence
+          framePath="/assets/about/frame_%03d.webp"
+          frameCount={FRAME_COUNT}
+          pinned={false}
+          startPreload={startPreload}
+          className="about__scrub"
+        />
       </div>
 
       <div className="about__content">

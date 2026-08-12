@@ -6,6 +6,10 @@
   padding-block: clamp(5rem, 12vw, 9rem);
 }
 
+.about__asset {
+  aspect-ratio: 4 / 5;
+}
+
 .about__content {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,19 @@
+.scrub-sequence {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.scrub-sequence__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.scrub-sequence__canvas.is-ready {
+  opacity: 1;
+}
