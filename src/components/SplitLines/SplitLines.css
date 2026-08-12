@@ -1,0 +1,27 @@
+/* Forces the split target to a stable, non-shrink-to-fit width. Without
+   this, a heading centered via a flex parent's align-items (rather than
+   text-align) sizes to fit its own content - and since this component
+   keeps replacing that content, the container's width would change on
+   every rebuild, feeding back into another rebuild indefinitely. Visual
+   centering still works via text-align, inherited or set on the target. */
+.split-lines-root {
+  width: 100%;
+}
+
+.split-line {
+  display: block;
+  overflow: hidden;
+}
+
+/* No CSS-authored transform here on purpose: useSectionReveal's very
+   first gsap.set(lines, { yPercent: 110 }) establishes the hidden state,
+   synchronously inside a useLayoutEffect, before the browser paints - so
+   there's no flash of visible text without it. A CSS class value that
+   happens to match a tween's target is a known GSAP footgun: if this
+   rule set the same translateY(110%) GSAP's first .set() writes, the
+   later .to(..., { yPercent: 0 }) silently never animates (reproduced
+   in isolation, unrelated to React) - it just sits at the CSS value. */
+.split-line__inner {
+  display: block;
+  will-change: transform;
+}

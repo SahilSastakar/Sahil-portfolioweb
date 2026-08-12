@@ -1,3 +1,6 @@
+import SplitLines from "../../../components/SplitLines/SplitLines.jsx";
+import { useSectionReveal } from "../../../hooks/useSectionReveal.js";
+import { useTimelineScrub } from "../../../hooks/useTimelineScrub.js";
 import "./Experience.css";
 
 const ENTRIES = [
@@ -28,11 +31,16 @@ const ENTRIES = [
 ];
 
 function Experience() {
-  return (
-    <section className="experience container">
-      <h2 className="mono-label experience__label">Experience</h2>
+  const headingScope = useSectionReveal();
+  const timelineScope = useTimelineScrub();
 
-      <div className="experience__timeline">
+  return (
+    <section className="experience container" ref={headingScope}>
+      <SplitLines as="h2" className="mono-label experience__label">
+        Experience
+      </SplitLines>
+
+      <div className="experience__timeline" ref={timelineScope}>
         <div className="experience__line" />
 
         {ENTRIES.map((entry, i) => (

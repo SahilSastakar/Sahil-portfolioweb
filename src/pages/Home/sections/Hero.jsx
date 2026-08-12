@@ -1,9 +1,13 @@
 import AssetPlaceholder from "../../../components/AssetPlaceholder/AssetPlaceholder.jsx";
+import SplitLines from "../../../components/SplitLines/SplitLines.jsx";
+import { useSectionReveal } from "../../../hooks/useSectionReveal.js";
 import "./Hero.css";
 
 function Hero() {
+  const scope = useSectionReveal();
+
   return (
-    <section className="hero">
+    <section className="hero" ref={scope}>
       <div className="hero__stage">
         <AssetPlaceholder
           path="/assets/hero/frame_001.webp"
@@ -13,8 +17,10 @@ function Hero() {
       </div>
 
       <div className="hero__content container">
-        <h1 className="hero__heading">SAHIL SASTAKAR</h1>
-        <p className="mono-label">
+        <SplitLines as="h1" className="hero__heading">
+          SAHIL SASTAKAR
+        </SplitLines>
+        <p className="mono-label reveal-fade">
           [TODO: role line, e.g. Data & AI Graduate, Monash University]
         </p>
       </div>
