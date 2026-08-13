@@ -52,7 +52,12 @@ export function PageTransitionProvider({ children }) {
         .to(el, { scaleX: 1, duration: 0.5, ease: "power2.inOut" })
         .call(() => {
           navigate(to);
-          window.scrollTo(0, 0);
+          // A hash target (e.g. "/work#contact") gets scrolled to by
+          // useSmoothScroll once the new page's layout settles - forcing
+          // the top here would just fight that a moment later.
+          if (!to.includes("#")) {
+            window.scrollTo(0, 0);
+          }
         })
         .set(el, { transformOrigin: "right" })
         .to(el, { scaleX: 0, duration: 0.5, ease: "power2.inOut" })
