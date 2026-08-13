@@ -31,15 +31,103 @@
   font-size: clamp(2.5rem, 9vw, 7rem);
 }
 
-.contact__email {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 4vw, 2.75rem);
-  color: var(--accent);
-  transition: opacity 0.3s var(--ease-out);
+.contact-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-block: 1rem;
 }
 
-.contact__email:hover {
-  opacity: 0.8;
+/* Glassmorphic card, same recipe as the Thread project cards (dark tint
+   + blur + saturate) so the two glass treatments read as one language
+   across the site. Border/glow stay dim until hover - each variant sets
+   --neon as an r,g,b triplet so one hover rule handles all three. */
+.contact-card {
+  --neon: 255, 255, 255;
+  width: 12rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  background: rgba(10, 10, 12, 0.45);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  transition:
+    border-color 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    transform 0.35s var(--ease-out);
+}
+
+.contact-card--linkedin {
+  --neon: 47, 143, 255;
+}
+
+.contact-card--gmail {
+  --neon: 255, 51, 102;
+}
+
+.contact-card--github {
+  --neon: 57, 255, 136;
+}
+
+.contact-card:hover {
+  border-color: rgba(var(--neon), 0.9);
+  box-shadow:
+    0 0 20px rgba(var(--neon), 0.45),
+    0 0 46px rgba(var(--neon), 0.22);
+  transform: translateY(-4px);
+}
+
+.contact-card__avatar {
+  position: relative;
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  background: linear-gradient(160deg, var(--bg-raised), var(--bg-base));
+  transition: border-color 0.35s var(--ease-out);
+}
+
+.contact-card:hover .contact-card__avatar {
+  border-color: rgba(var(--neon), 0.7);
+}
+
+.contact-card__avatar-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.contact-card__avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact-card__label {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: color 0.35s var(--ease-out);
+}
+
+.contact-card:hover .contact-card__label {
+  color: rgb(var(--neon));
 }
 
 .contact__resume-button {
