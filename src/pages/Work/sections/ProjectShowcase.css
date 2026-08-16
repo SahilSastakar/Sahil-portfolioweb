@@ -38,10 +38,25 @@
   z-index: 1;
 }
 
-.thread-station__bg video {
+.thread-station__bg .station-frames {
+  width: 100%;
+  height: 100%;
+}
+
+.thread-station__frames .station-frames__canvas,
+.thread-station__frames .station-frames__poster {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.thread-station__frames .station-frames__canvas.is-ready,
+.thread-station__frames .station-frames__poster:not(.is-hidden) {
+  opacity: 1;
 }
 
 /* Soft vignette so the video blends into the page at the edges instead
@@ -184,17 +199,6 @@
   color: var(--accent);
 }
 
-.thread-station__link {
-  font-family: var(--font-display);
-  font-weight: 600;
-  margin-block-start: 0.5rem;
-  transition: opacity 0.3s var(--ease-out);
-}
-
-.thread-station__link:hover {
-  opacity: 0.75;
-}
-
 /* ================= Stacked fallback (mobile, and reduced motion) ================= */
 
 .thread-stacked {
@@ -308,12 +312,3 @@
   color: var(--accent-dim);
 }
 
-.thread-stacked__link {
-  font-family: var(--font-display);
-  font-weight: 600;
-  transition: color 0.3s var(--ease-out);
-}
-
-.thread-stacked__link:hover {
-  color: var(--accent);
-}

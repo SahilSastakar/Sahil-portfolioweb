@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import { gsap } from "../../../../lib/gsap.js";
 import SplitLines from "../../../../components/SplitLines/SplitLines.jsx";
+import StationFrames from "./StationFrames.jsx";
 import { THREAD_CONFIG } from "./threadConfig.js";
 
 // 0 outside the range, ramps 0->1 across [fadeInStart, plateauStart], holds
@@ -22,8 +23,7 @@ const Station = forwardRef(function Station({ station }, forwardedRef) {
   const rootRef = useRef(null);
   const bgRef = useRef(null);
   const cardRef = useRef(null);
-  const videoRef = useRef(null);
-  const isPlayingRef = useRef(false);
+  const framesRef = useRef(null);
 
   // Exposes an update(progress) the parent's single rAF tick calls - avoids
   // each station running its own ticker/ScrollTrigger for the same value.
@@ -46,14 +46,12 @@ const Station = forwardRef(function Station({ station }, forwardedRef) {
         rootRef.current.setAttribute("aria-hidden", visibility <= 0.05 ? "true" : "false");
       }
 
+      // Frame index is scrubbed by scroll position across the station's
+      // whole visible window (fade-in through fade-out) - not a real-time
+      // playing clip, so it only moves when the user scrolls.
       const [fadeInStart, , , fadeOutEnd] = station.range;
-      const shouldPlay = progress > fadeInStart && progress < fadeOutEnd;
-      const video = videoRef.current;
-      if (video && shouldPlay !== isPlayingRef.current) {
-        isPlayingRef.current = shouldPlay;
-        if (shouldPlay) video.play().catch(() => {});
-        else video.pause();
-      }
+      const localProgress = (progress - fadeInStart) / (fadeOutEnd - fadeInStart);
+      framesRef.current?.setProgress(Math.min(1, Math.max(0, localProgress)));
     },
   }));
 
@@ -65,14 +63,12 @@ const Station = forwardRef(function Station({ station }, forwardedRef) {
   return (
     <div ref={rootRef} className="thread-station">
       <div className="thread-station__bg" ref={bgRef}>
-        <video
-          ref={videoRef}
-          src={station.video}
+        <StationFrames
+          ref={framesRef}
+          framePath={station.framePath}
+          frameCount={station.frameCount}
           poster={station.poster}
-          muted
-          loop
-          playsInline
-          preload="none"
+          className="thread-station__frames"
         />
       </div>
 
@@ -122,10 +118,6 @@ const Station = forwardRef(function Station({ station }, forwardedRef) {
           </ul>
 
           <p className="mono-label thread-station__outcome">{station.outcome}</p>
-
-          <a href={station.url} className="thread-station__link">
-            View project →
-          </a>
         </div>
       </div>
     </div>

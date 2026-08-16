@@ -64,10 +64,6 @@ function StackedStation({ station, useVideo }) {
         <p className="mono-label thread-stacked__outcome reveal-fade">
           {station.outcome}
         </p>
-
-        <a href={station.url} className="thread-stacked__link reveal-fade">
-          View project →
-        </a>
       </div>
     </section>
   );
