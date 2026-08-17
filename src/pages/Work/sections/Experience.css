@@ -58,3 +58,25 @@
   color: var(--text-muted);
   max-width: 50ch;
 }
+
+.experience__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience__list .experience__description {
+  position: relative;
+  max-width: 60ch;
+  padding-inline-start: 1.1rem;
+}
+
+.experience__list .experience__description::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--accent-dim);
+}
