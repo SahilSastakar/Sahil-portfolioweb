@@ -14,7 +14,7 @@ function Footer() {
           <ul className="footer__list">
             <li>
               <a
-                href="https://linkedin.com/in/sahil-sastakar"
+                href="https://www.linkedin.com/in/sahil-sastakar-653268178/"
                 target="_blank"
                 rel="noreferrer"
                 className="mono-label"
